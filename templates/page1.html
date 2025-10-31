@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitoreo Ambiental con ESP32 y MySQL</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #b8fbd0;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100vh;
+            padding: 0 100px;
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .sidebar button {
+            background-color: #00897b;
+            color: black;
+            border: none;
+            border-radius: 15px;
+            padding: 12px 20px;
+            width: 220px;
+            font-weight: 600;
+            font-size: 14px;
+            text-align: center;
+            cursor: pointer;
+            box-shadow: 3px 3px 6px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            word-wrap: break-word;
+        }
+
+        .sidebar button:hover {
+            background-color: #00796b;
+            color: white;
+        }
+
+        .content {
+            text-align: center;
+            flex: 1;
+        }
+
+        .content h1 {
+            font-size: 22px;
+            color: #000;
+            font-weight: bold;
+            line-height: 1.5;
+            margin-bottom: 40px;
+        }
+
+        .main-btn {
+            background-color: #00897b;
+            color: black;
+            border: none;
+            border-radius: 15px;
+            padding: 12px 40px;
+            font-weight: bold;
+            font-size: 14px;
+            cursor: pointer;
+            box-shadow: 3px 3px 6px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .main-btn:hover {
+            background-color: #00796b;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <form action="{{ url_for('presumen') }}" method="get">
+                <button type="submit">RESUMEN</button>
+            </form>
+            <form action="{{ url_for('pobjetivo') }}" method="get">
+                <button type="submit">OBJETIVO GENERAL</button>
+            </form>
+            <form action="{{ url_for('pcompo') }}" method="get">
+                <button type="submit">Componentes y<br>Conexiones de<br>Hardware</button>
+            </form>
+            <form action="{{ url_for('psistema') }}" method="get">
+                <button type="submit">Funcionamiento del<br>Sistema</button>
+            </form>
+        </div>
+
+        <div class="content">
+            <h1>Monitoreo Ambiental con<br>ESP32 y MySQL:<br>Implementación en Fusagasugá</h1>
+            <form action="{{ url_for('psistema') }}" method="get">
+                <button class="main-btn" type="submit">MONITOREO</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

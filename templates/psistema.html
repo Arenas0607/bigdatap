@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resumen - Monitoreo Ambiental</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #b8fbd0;
+            display: flex;
+            min-height: 100vh; 
+        }
+
+        .sidebar {
+            background-color: #00897b;
+            width: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            user-select: none;
+            text-decoration: none; 
+            transition: background-color 0.3s ease;
+        }
+
+        .sidebar:hover {
+            background-color: #00695c; 
+        }
+
+        .content {
+            padding: 60px;
+            flex: 1;
+        }
+
+        .content h1 {
+            font-size: 26px;
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+        }
+
+        .section {
+            margin-bottom: 20px;
+        }
+
+        .section h2 {
+            font-size: 18px;
+            font-weight: bold;
+            color: #004d40;
+            margin-bottom: 8px;
+        }
+
+        .section p {
+            text-align: justify;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #000;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <a href="{{ url_for('home') }}" class="sidebar" title="Volver a inicio">
+        &lt;
+    </a>
+
+    <div class="content">
+        <h1>Funcionamiento del Sistema</h1>
+
+        <div class="section">
+            <h2>1. Captura de Datos</h2>
+            <p>
+                Se realiza la lectura de temperatura y humedad mediante los sensores <strong>DHT11</strong> y <strong>DHT22</strong>. 
+                La concentración de gas hidrógeno se detecta con el sensor <strong>MQ8</strong>, 
+                y la hora y fecha actual se obtienen desde el módulo <strong>RTC DS3231</strong>.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>2. Envío de Datos</h2>
+            <p>
+                Si hay una conexión WiFi activa, los datos se envían directamente a la base de datos <strong>MySQL</strong>. 
+                En caso contrario, la información se almacena temporalmente en la <strong>EEPROM</strong>.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>3. Recuperación y Sincronización</h2>
+            <p>
+                Cuando se restablece la conexión WiFi, el sistema recupera los registros almacenados en la EEPROM 
+                y los sincroniza con la base de datos en orden cronológico. 
+                Una vez enviados correctamente, los datos se eliminan de la EEPROM para liberar espacio.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>4. Base de Datos MySQL</h2>
+            <p>
+                La base de datos está alojada localmente en un servidor <strong>XAMPP</strong>. 
+                Fue modificada para incluir la columna <strong>humedad_dht11</strong>, 
+                lo que permite almacenar la información proveniente de ambos sensores de humedad de forma separada.
+            </p>
+        </div>
+    </div>
+</body>
+</html>

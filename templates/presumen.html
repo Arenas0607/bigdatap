@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resumen - Monitoreo Ambiental</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #b8fbd0;
+            display: flex;
+            min-height: 100vh; 
+        }
+
+        .sidebar {
+            background-color: #00897b;
+            width: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            user-select: none;
+            text-decoration: none; 
+            transition: background-color 0.3s ease;
+        }
+
+        .sidebar:hover {
+            background-color: #00695c; 
+        }
+
+        .content {
+            padding: 60px;
+            flex: 1;
+        }
+
+        .content h1 {
+            font-size: 26px;
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .content p {
+            text-align: justify;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    <a href="{{ url_for('home') }}" class="sidebar" title="Volver a inicio">
+        &lt;
+    </a>
+
+    <div class="content">
+        <h1>RESUMEN</h1>
+        <p>
+            Este proyecto tiene como objetivo el diseño y desarrollo de un sistema de interés basado en el microcontrolador ESP32, 
+            capaz de capturar datos ambientales desde sensores (DHT11, DHT22, MQ8), almacenar dicha información en una base de datos 
+            MySQL utilizando una conexión Wifi, y garantizar la continuidad del almacenamiento mediante una EEPROM AT24C32 en caso 
+            de fallos en la conectividad. Esta solución está pensada para aplicaciones donde la conectividad no es constante, 
+            permitiendo que los datos no se pierdan y se sincronicen posteriormente de manera automática.
+        </p>
+    </div>
+</body>
+</html>
